@@ -1,4 +1,35 @@
+# Python cache
 __pycache__/
 *.pyc
-.DS_Store
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Django database
+db.sqlite3
+
+# Static files generated during collectstatic
 staticfiles/
+
+# Media files (if using local storage)
+media/
+
+# Environment variables
+.env
+
+# Mac system files
+.DS_Store
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# Python egg files
+*.egg-info/
+dist/
+build/
