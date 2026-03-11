@@ -4,15 +4,14 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Replace with your own secret key in production
-SECRET_KEY = "your-secret-key"
+SECRET_KEY = 'django-insecure-4of7qn^+yzjatd*=^ph7-0l4vb3t#9b&x(8gh3qz4_0%$t!$)n'
 
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "your-domain.com",
-    "www.your-domain.com",
-    "your-server-ip"
+    "liokhotels.com",
+    "www.liokhotels.com",
+    "43.205.178.30",
 ]
 
 
@@ -67,9 +66,9 @@ WSGI_APPLICATION = 'liok_hotels_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'database_name',
-        'USER': 'database_user',
-        'PASSWORD': 'database_password',
+        'NAME': 'liokhotels_db',
+        'USER': 'liokuser',
+        'PASSWORD': '78fA/O;D4:07!--&',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -118,11 +117,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.your-email-provider.com'
+EMAIL_HOST = 'smtp.zoho.in'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'your-email@example.com'
-EMAIL_HOST_PASSWORD = 'email-password'
+EMAIL_HOST_USER = 'info@liokhotels.com'
+EMAIL_HOST_PASSWORD = 'gsEfs2XwmgyZ'
 
-DEFAULT_FROM_EMAIL = 'your-email@example.com'
+DEFAULT_FROM_EMAIL = 'info@liokhotels.com'
+
