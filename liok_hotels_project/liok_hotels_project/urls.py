@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from liok_hotels_app.sitemap import StaticViewSitemap, PropertySitemap, BlogSitemap, RoomSitemap
 from django.http import HttpResponse
+from django.views.static import serve
+from liok_hotels_app.views import haze_virtual_tour, akai_virtual_tour
 import os
 
 
@@ -29,11 +31,30 @@ urlpatterns = [
 
     path('robots.txt', robots_txt),
 
+    # Virtual tour entry URLs
+    path(
+        "property/haze-mountain/virtual-tour/",
+        haze_virtual_tour
+    ),
+
+    path(
+        "property/akai-vibe/virtual-tour/",
+        akai_virtual_tour
+    ),
+
+    # Serve virtual tour files
+    path(
+        "property/<path:path>",
+        serve,
+        {"document_root": os.path.join(settings.BASE_DIR, "virtual_tours/property")},
+    ),
+
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 handler404 = 'liok_hotels_app.views.custom_404'

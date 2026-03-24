@@ -557,6 +557,12 @@ def property_detail(request, slug):
     property_obj = get_object_or_404(Property, slug=slug)
     rooms = property_obj.rooms.all()
     nearby = property_obj.nearby_locations.all()
+    virtual_tour_route_map = {
+        "haze-mountain": "/property/haze-mountain/virtual-tour/",
+        "haze-mountain-resort": "/property/haze-mountain/virtual-tour/",
+        "akai-vibe": "/property/akai-vibe/virtual-tour/",
+    }
+    virtual_tour_url = virtual_tour_route_map.get(property_obj.slug)
 
     # Convert the textarea string into a clean Python list
     # This handles extra spaces if a user types 'Wifi,  Pool'
@@ -568,6 +574,7 @@ def property_detail(request, slug):
         "rooms": rooms,
         "nearby": nearby,
         "amenities": amenities,
+        "virtual_tour_url": virtual_tour_url,
     }
     return render(request, "frontend/property-details.html", context)
 
@@ -929,3 +936,12 @@ def frontend_blog_detail(request, slug):
 
 def custom_404(request, exception):
     return render(request, 'frontend/404.html', status=404)
+
+
+
+def haze_virtual_tour(request):
+    return redirect("/property/haze-mountain/virtual-tour/index.html")
+
+
+def akai_virtual_tour(request):
+    return redirect("/property/akai-vibe/virtual-tour/index.html")

@@ -32,4 +32,4 @@ media/
 # Python egg files
 *.egg-info/
 dist/
-build/
+build/liok_hotels_project/virtual_tours/

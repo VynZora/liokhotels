@@ -59,10 +59,16 @@
     border-radius: 20px !important;
     object-fit: cover;
 }
-a.btn-gold {
+    a.btn-gold {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
+}
+
+.property-cta-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 </style>
 
@@ -106,12 +112,17 @@ a.btn-gold {
                     <div class="section-title">Enjoy a Luxury Experience</div>
                     <p>{{ property.overview|safe }}</p>
     
-                    <div class="mb-30">
+                    <div class="mb-30 property-cta-group">
                         <a href="https://wa.me/{{ property.whatsapp_number }}?text=Hello%20Liok%20Hotels,%20I%20am%20interested%20in%20booking%20a%20stay%20at%20{{ property.name|urlencode }}." 
                            class="btn-gold" 
                            target="_blank">
                             Chat on WhatsApp <i class="fab fa-whatsapp"></i>
                         </a>
+                        {% if virtual_tour_url %}
+                        <a href="{{ virtual_tour_url }}" class="btn-gold" target="_blank" rel="noopener noreferrer">
+                            Virtual Tour <i class="ti-camera"></i>
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
     
