@@ -35,6 +35,19 @@ in Munnar with our premium resorts.{% endblock %}
         width: 100%;
         object-fit: cover;
     }
+
+    .captcha-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    @media (max-width: 575.98px) {
+        .captcha-wrapper .g-recaptcha {
+            transform: scale(0.9);
+            transform-origin: 0 0;
+        }
+    }
 </style>
 
 <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="3"
@@ -135,6 +148,15 @@ in Munnar with our premium resorts.{% endblock %}
                                 required></textarea>
                         </div>
 
+                        {% if recaptcha_enabled %}
+                        <div class="col-md-12 form-group mb-3">
+                            <input type="hidden" name="enforce_recaptcha" value="1">
+                            <div class="captcha-wrapper">
+                                <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+                            </div>
+                        </div>
+                        {% endif %}
+
                         <div class="col-md-12">
                             <button type="submit" class="butn-dark2 w-100">
                                 <span>Send Message</span>
@@ -193,4 +215,11 @@ in Munnar with our premium resorts.{% endblock %}
 
 {% comment %} <section class="testimonials"> ... </section> {% endcomment %}
 {% comment %} <section class="clients"> ... </section> {% endcomment %}
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+{% if recaptcha_enabled %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endif %}
 {% endblock %}
