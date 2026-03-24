@@ -229,9 +229,10 @@ Liok Hotels in Munnar.{% endblock %}
                                 {% if messages %}
                                 <div id="contact-success-alert">
                                     {% for message in messages %}
-                                    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} small py-2"
+                                    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} alert-dismissible fade show small py-2"
                                         role="alert">
                                         {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                     {% endfor %}
                                 </div>
